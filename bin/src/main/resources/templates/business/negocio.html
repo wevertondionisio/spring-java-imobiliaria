@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{LayoutBusiness}">
+		
+<head>
+<meta charset="UTF-8">
+</head>
+
+	
+<section layout:fragment="conteudo">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         <h1 class="h2">Novo negócio</h1>
+   	</div> 
+    <div class="table-responsive">
+		<form action="#" th:action="@{/home/negocios/save}" th:object="${business}" method="POST" >
+			<div class="mb-3">
+		  		<label for="negocio" class="form-label">Nome do negócio</label>
+		  		<input type="text" class="form-control" name="negocio" id="negocio" placeholder="negócio" th:field="*{negocio}">
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		</form>                    
+                            			
+    </div>
+</section>		
+
+</html> 

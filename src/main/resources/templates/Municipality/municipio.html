@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{LayoutMunicipality}">
+		
+<head>
+<meta charset="UTF-8">
+</head>
+
+	
+<section layout:fragment="conteudo">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         <h1 class="h2">Novo município</h1>
+         <a class="btn" href="/home/municipios"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+  			<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+			</svg> voltar</a>
+   	</div> 
+    <div class="table-responsive">
+		<form action="#" th:action="@{/home/municipios/save}" th:object="${municipality}" method="POST" >
+		<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+   				<span>Salvo com sucesso!</span>
+  	  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div class="mb-3">
+		  		<label for="nome" class="form-label">Nome do município</label>
+		  		<input type="text" class="form-control" name="nome" id="nome" placeholder="nome" th:field="*{nome}">
+				
+				<label for="estado" >Nome do estado </label>
+				<select class="form-select" name="estado" id="estado">
+					<option th:each="state : ${listState}" th:value="${state.id}" th:text="${state.nome}"selected>Selecione o estado</option>
+				</select>
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		
+		</form>                      
+                            			
+    </div>
+</section>		
+
+</html> 
